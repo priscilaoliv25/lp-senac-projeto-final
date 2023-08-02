@@ -1,0 +1,248 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Projeto Final G6 || Pronto </title>
+</head>
+
+<body>
+    <script>
+        var menu;
+        var fazerPedido;
+        var pedidoBebidas;
+        var pedidoEntrada;
+        var pedidoPratoPrincipal;
+        var pedidoSobremesas;
+        var pedido = [];
+        var valorPedido = [];
+        var soma = 0;
+        var temBebida = false, temComida = false;
+
+        /*
+        MENU INICIAL || 1 - Exibir Cardapio | 2 - Fazer Pedido | 3 - Imprimir Pedido | 4 - Sair
+        */
+        do {
+            menu = parseInt(prompt("Escolha o que deseja:\n 1-Cardapio \n 2-Fazer o Pedido \n 3-Imprimir o Pedido \n 4-Sair"));
+            if (menu == 1) {
+                exibirCardapio();
+            } else if (menu == 2) {
+                fazerPedidos();
+            } else if (menu == 3) {
+                imprimirPedido();
+            }
+        } while (menu != 4);
+
+        // EXIBIR CARDAPIO
+        function exibirCardapio() {
+            console.log("CARDÁPIO\n\n* Entrada *\nSalada Verde - R$ 15,90\nCanapés - R$ 18,20\nPão Australiano - R$ 17,50\n\n* Prato principal *\nRisoto - R$ 37,50\nMacarrão - R$ 28,90\nLasanha - R$ 25,80\nRavioli - R$ 22,50\n\n* Sobremesas *\nTorta de Limão - R$ 12,00\nTorta holandesa - R$ 12,00\nMousse de chocolate - R$ 8,00\n\n* Bebidas *\nSuco - R$ 6,00\nÁgua - R$ 2,00\nRefrigerante - R$ 6,00\nVinho - R$ 8,00 || *Apenas para maiores*\nDrinks com álcool - R$ 8,00 || *Apenas para maiores*");
+            alert("CARDÁPIO\n\n* Entrada *\nSalada Verde - R$ 15,90\nCanapés - R$ 18,20\nPão Australiano - R$ 17,50\n\n* Prato principal *\nRisoto - R$ 37,50\nMacarrão - R$ 28,90\nLasanha - R$ 25,80\nRavioli - R$ 22,50\n\n* Sobremesas *\nTorta de Limão - R$ 12,00\nTorta holandesa - R$ 12,00\nMousse de chocolate - R$ 8,00\n\n* Bebidas *\nSuco - R$ 6,00\nÁgua - R$ 2,00\nRefrigerante - R$ 6,00\nVinho - R$ 8,00 || *Apenas para maiores*\nDrinks com álcool - R$ 8,00 || *Apenas para maiores*");
+        }
+
+        // FAZER PEDIDO 
+        function fazerPedidos() {
+            alert("É obrigatorio pedir uma comida + uma bebida.");
+            fazerPedido = parseInt(prompt("Escolha o que deseja:\n 1-Bebidas \n 2-Entrada \n 3-Prato Principal \n 4-Sobremesa"));
+            do {
+                if (fazerPedido == 1) {
+                    alert("Algumas bebidas permitidas somente para maiores de 18 anos");
+                    bebidas();
+                    temBebida = true;
+                    return
+                } else if (fazerPedido == 2) {
+                    entrada();
+                    temComida = true;
+                    return
+                } else if (fazerPedido == 3) {
+                    pratoPrincipal();
+                    temComida = true;
+                    return
+                } else if (fazerPedido == 4) {
+                    sobremesas();
+                    temComida = true;
+                    return
+                }
+            } while ((fazerPedido == 1) || (fazerPedido == 2) || (fazerPedido == 3) || (fazerPedido == 4));
+            return pedido, valorPedido;
+
+        }
+
+        // Bebidas || Função para chamar no pedido  
+        function bebidas() {
+            var maior18 = confirm("Informe se é menor de 18 anos?\n\n Ok para SIM ou Cancelar para NÃO");
+            if (maior18 == false) {
+                pedidoBebidas = parseInt(prompt("Escolha a sua bebida:\n 1. Suco - R$ 6.00\n2. Água - R$ 2.00\n3. Refrigerante - R$ 6.00\n4. Vinho - R$ 8.00\n5. Drinks com Álcool - R$ 8.00"));
+                if (pedidoBebidas == 1) {
+                    pedido.push("Suco");
+                    valorPedido.push(6.00);
+                    console.log(pedido + " - " + valorPedido);
+                    return pedido, valorPedido;
+                }
+                if (pedidoBebidas == 2) {
+                    pedido.push("Água");
+                    valorPedido.push(2.00);
+                    console.log(pedido + " - " + valorPedido);
+                    return pedido, valorPedido;
+                }
+                if (pedidoBebidas == 3) {
+                    pedido.push("Refrigerante");
+                    valorPedido.push(6.00);
+                    console.log(pedido + " - " + valorPedido);
+                    return pedido, valorPedido;
+                }
+                if (pedidoBebidas == 4) {
+                    pedido.push("Vinho");
+                    valorPedido.push(8.00);
+                    console.log(pedido + " - " + valorPedido);
+                    return pedido, valorPedido;
+                }
+                if (pedidoBebidas == 5) {
+                    pedido.push("Drinks com álcool");
+                    valorPedido.push(8.00);
+                    console.log(pedido + " - " + valorPedido);
+                    return pedido, valorPedido;
+                }
+            } else {
+                pedidoBebidas = parseInt(prompt("Escolha a sua bebida:\n 1. Suco - R$ 6.00\n2. Água - R$ 2.00\n3. Refrigerante - R$ 6.00"));
+                if (pedidoBebidas == 1) {
+                    pedido.push("Suco");
+                    valorPedido.push(6.00);
+                    console.log(pedido + " - " + valorPedido);
+                    return pedido, valorPedido;
+                }
+                if (pedidoBebidas == 2) {
+                    pedido.push("Água");
+                    valorPedido.push(2.00);
+                    console.log(pedido + " - " + valorPedido);
+                    return pedido, valorPedido;
+                }
+                if (pedidoBebidas == 3) {
+                    pedido.push("Refrigerante");
+                    valorPedido.push(6.00);
+                    console.log(pedido + " - " + valorPedido);
+                    return pedido, valorPedido;
+                }
+            }
+        }
+
+        // Entrada || Função para chamar no pedido
+        function entrada() {
+            pedidoEntrada = parseInt(prompt("Escolha uma entrada:\n 1. Salada Verde - R$ 15,90\n2. Canapés - R$ 18,20\n3. Pão Australiano - R$ 17,50"));
+            if (pedidoEntrada == 1) {
+                pedido.push("Salada Verde");
+                valorPedido.push(15.90);
+                console.log(pedido + " - " + valorPedido);
+                return pedido, valorPedido;
+            }
+            if (pedidoEntrada == 2) {
+                pedido.push("Canapés");
+                valorPedido.push(18.20);
+                console.log(pedido + " - " + valorPedido);
+                return pedido, valorPedido;
+            }
+            if (pedidoEntrada == 3) {
+                pedido.push("Pão Australiano");
+                valorPedido.push(17.50);
+                console.log(pedido + " - " + valorPedido);
+                return pedido, valorPedido;
+            }
+        }
+
+        // Prato Principal || Função para chamar no pedido
+        function pratoPrincipal() {
+            pedidoPratoPrincipal = parseInt(prompt("Escolha um prato principal:\n1. Risoto - R$ 37,50\n2. Macarrão - R$ 28,90\n3. Lasanha - R$ 25,80\n4. Ravioli - R$ 22,50"));
+            if (pedidoPratoPrincipal == 1) {
+                pedido.push("Risoto");
+                valorPedido.push(37.50);
+                console.log(pedido + " - " + valorPedido);
+                return pedido, valorPedido;
+            }
+            if (pedidoPratoPrincipal == 2) {
+                pedido.push("Macarrão");
+                valorPedido.push(28.90);
+                console.log(pedido + " - " + valorPedido);
+                return pedido, valorPedido;
+            }
+            if (pedidoPratoPrincipal == 3) {
+                pedido.push("Lasanha");
+                valorPedido.push(25.80);
+                console.log(pedido + " - " + valorPedido);
+                return pedido, valorPedido;
+            }
+            if (pedidoPratoPrincipal == 4) {
+                pedido.push("Ravioli");
+                valorPedido.push(22.50);
+                console.log(pedido + " - " + valorPedido);
+                return pedido, valorPedido;
+            }
+        }
+
+        // Sobremesas || Função para chamar no pedido
+        function sobremesas() {
+            pedidoSobremesas = parseInt(prompt("Escolha uma sobremesa:\n1. Torta de Limão - R$ 12,00\n2. Torta Holandesa - R$ 12,00\n3. Mousse de Chocolate - R$ 8,00"));
+            if (pedidoSobremesas == 1) {
+                pedido.push("Torta de Limão");
+                valorPedido.push(12.00);
+                console.log(pedido + " - " + valorPedido);
+                return pedido, valorPedido;
+            }
+            if (pedidoSobremesas == 2) {
+                pedido.push("Torta Holandesa");
+                valorPedido.push(12.00);
+                console.log(pedido + " - " + valorPedido);
+                return pedido, valorPedido;
+            }
+            if (pedidoSobremesas == 3) {
+                pedido.push("Mousse de Chocolate");
+                valorPedido.push(8.00);
+                console.log(pedido + " - " + valorPedido);
+                return pedido, valorPedido;
+            }
+        }
+
+        // IMPRIMIR PEDIDO
+        function imprimirPedido() {
+            if (pedido == 0) {
+                console.log("Nenhum pedido foi feito");
+                alert("Nenhum pedido foi feito");
+            } else {
+                condicaoCombo();
+            }
+            return
+        }
+
+        // CONDIÇÃO COMBO || Função para chamar no imprimir pedido
+        function condicaoCombo() {
+            if (temBebida && temComida) {
+                somaTotal();
+            } else if (temComida) {
+                console.log("Escolha uma bebida para concluir seu pedido.");
+                alert("Escolha uma bebida para concluir seu pedido.");
+                while (temBebida == false) {
+                    fazerPedidos();
+                }
+                somaTotal();
+            } else if (temBebida) {
+                console.log("Escolha uma entrada ou um prato principal ou uma sobremesa para concluir seu pedido.");
+                alert("Escolha uma entrada ou um prato principal ou uma sobremesa para concluir seu pedido.");
+                while (temComida == false) {
+                    fazerPedidos();
+                }
+                somaTotal();
+            }
+        }
+
+        // Soma Total || Função para incluir na condição combo
+        function somaTotal() {
+            for (var i = 0; i < valorPedido.length; i++) {
+                soma += valorPedido[i];
+                valorPedido;
+            }
+            console.log("O pedido é " + pedido + "\n\nE o valor total é R$ " + soma.toFixed(2));
+            alert("O pedido é " + pedido + "\n\nE o valor total é R$ " + soma.toFixed(2));
+        }
+
+    </script>
+
+</body>
+
+</html>
